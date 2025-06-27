@@ -7,6 +7,7 @@ import Layout from '@/components/organisms/Layout';
 import Dashboard from '@/components/pages/Dashboard';
 import SubmitContent from '@/components/pages/SubmitContent';
 import ContentLibrary from '@/components/pages/ContentLibrary';
+import ExpertManagement from '@/components/pages/ExpertManagement';
 import AIChat from '@/components/pages/AIChat';
 import Login from '@/components/pages/Login';
 import Signup from '@/components/pages/Signup';
@@ -138,11 +139,12 @@ function AppContent() {
         <Route path="/reset-password/:appId/:fields" element={<ResetPassword />} />
         <Route path="/*" element={
           <Layout>
-            <Routes>
+<Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/submit" element={<SubmitContent />} />
               <Route path="/library" element={<ContentLibrary />} />
+              <Route path="/experts" element={<ExpertManagement />} />
               <Route path="/chat" element={<AIChat />} />
             </Routes>
           </Layout>

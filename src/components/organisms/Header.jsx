@@ -11,10 +11,11 @@ const Header = () => {
   const { logout } = useContext(AuthContext);
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
-  const navigation = [
+const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: 'LayoutDashboard' },
     { name: 'Submit Content', href: '/submit', icon: 'Upload' },
     { name: 'Content Library', href: '/library', icon: 'BookOpen' },
+    { name: 'Experts', href: '/experts', icon: 'UserCheck' },
     { name: 'AI Chat', href: '/chat', icon: 'MessageCircle' },
   ];
 
