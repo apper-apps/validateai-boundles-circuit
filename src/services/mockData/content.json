@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "title": "The Future of Artificial Intelligence in Healthcare",
+    "content": "Artificial intelligence is revolutionizing healthcare by enabling more accurate diagnoses, personalized treatment plans, and improved patient outcomes. Machine learning algorithms can analyze vast amounts of medical data to identify patterns that human doctors might miss. From radiology to drug discovery, AI is transforming every aspect of healthcare delivery. The integration of AI tools in clinical practice has shown remarkable results in early disease detection and treatment optimization.",
+    "source": "ChatGPT",
+    "type": "article",
+    "status": "pending",
+    "submittedAt": "2024-01-15T10:30:00Z",
+    "validatedAt": null
+  },
+  {
+    "Id": 2,
+    "title": "Sustainable Business Practices for Modern Enterprises",
+    "content": "Companies today face increasing pressure to adopt sustainable business practices that benefit both the environment and their bottom line. From reducing carbon footprints to implementing circular economy principles, businesses are discovering that sustainability is not just ethically important but also economically advantageous. Green initiatives can reduce operational costs, improve brand reputation, and attract environmentally conscious consumers.",
+    "source": "Claude",
+    "type": "blog-post",
+    "status": "validated",
+    "submittedAt": "2024-01-12T14:20:00Z",
+    "validatedAt": "2024-01-14T09:15:00Z"
+  },
+  {
+    "Id": 3,
+    "title": "Blockchain Technology in Supply Chain Management",
+    "content": "Blockchain technology offers unprecedented transparency and traceability in supply chain management. By creating immutable records of every transaction and movement of goods, blockchain can help companies verify authenticity, reduce fraud, and improve consumer trust. The technology enables real-time tracking of products from manufacturing to delivery, providing valuable insights for optimization and compliance.",
+    "source": "Gemini",
+    "type": "technical-documentation",
+    "status": "pending",
+    "submittedAt": "2024-01-14T16:45:00Z",
+    "validatedAt": null
+  },
+  {
+    "Id": 4,
+    "title": "Digital Marketing Strategies for 2024",
+    "content": "The digital marketing landscape continues to evolve rapidly, with new platforms, technologies, and consumer behaviors shaping strategy development. Successful brands are focusing on personalization, authentic storytelling, and multi-channel engagement to connect with their audiences. Video content, influencer partnerships, and AI-powered analytics are becoming essential components of effective marketing campaigns.",
+    "source": "ChatGPT",
+    "type": "marketing-copy",
+    "status": "validated",
+    "submittedAt": "2024-01-10T11:30:00Z",
+    "validatedAt": "2024-01-13T15:20:00Z"
+  },
+  {
+    "Id": 5,
+    "title": "Remote Work Best Practices and Team Collaboration",
+    "content": "Remote work has become a permanent fixture in modern business operations, requiring new approaches to team collaboration and productivity management. Successful remote teams rely on clear communication protocols, regular check-ins, and the right technology stack to maintain connection and efficiency. Building a strong remote culture involves intentional relationship-building activities and flexible work arrangements that accommodate different time zones and working styles.",
+    "source": "Claude",
+    "type": "article",
+    "status": "pending",
+    "submittedAt": "2024-01-13T09:15:00Z",
+    "validatedAt": null
+  }
+]

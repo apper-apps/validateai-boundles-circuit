@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "contentId": 1,
+    "expertName": "Dr. Sarah Chen",
+    "feedback": "The article provides a good overview of AI in healthcare, but lacks specific examples of current implementations. The writing is clear and engaging, though some technical claims need citation sources.",
+    "corrections": "Consider adding specific case studies from leading hospitals using AI diagnostic tools. Include recent statistics on AI adoption rates in healthcare. Expand on the challenges and ethical considerations of AI implementation.",
+    "fee": 150,
+    "submittedAt": "2024-01-16T08:30:00Z",
+    "selected": false
+  },
+  {
+    "Id": 2,
+    "contentId": 1,
+    "expertName": "Michael Rodriguez",
+    "feedback": "Well-structured piece with good flow. The content accurately represents current AI trends in healthcare. Minor grammatical improvements needed and some terminology could be more precise for a professional audience.",
+    "corrections": "Replace 'vast amounts' with specific data volume metrics. Clarify 'machine learning algorithms' to specify deep learning applications. Add transition sentences between paragraphs for better flow.",
+    "fee": 125,
+    "submittedAt": "2024-01-16T10:15:00Z",
+    "selected": false
+  },
+  {
+    "Id": 3,
+    "contentId": 3,
+    "expertName": "Jennifer Walsh",
+    "feedback": "The technical content is accurate and demonstrates good understanding of blockchain applications in supply chain. However, the explanation could be more accessible to non-technical readers.",
+    "corrections": "Add a brief explanation of how blockchain works before diving into applications. Include real-world examples of companies successfully using blockchain for supply chain management. Simplify some technical jargon.",
+    "fee": 175,
+    "submittedAt": "2024-01-15T14:20:00Z",
+    "selected": false
+  },
+  {
+    "Id": 4,
+    "contentId": 3,
+    "expertName": "David Kim",
+    "feedback": "Excellent technical accuracy and comprehensive coverage of blockchain's supply chain benefits. The content is well-researched and professionally written. Only minor formatting suggestions.",
+    "corrections": "Consider adding bullet points to highlight key benefits. Include a section on implementation challenges and costs. Add references to industry reports or studies supporting the claims.",
+    "fee": 200,
+    "submittedAt": "2024-01-15T16:45:00Z",
+    "selected": false
+  },
+  {
+    "Id": 5,
+    "contentId": 5,
+    "expertName": "Lisa Thompson",
+    "feedback": "Great insights on remote work challenges and solutions. The content reflects current best practices and is highly relevant. Some sections could benefit from more specific actionable advice.",
+    "corrections": "Add specific tools and software recommendations for remote collaboration. Include metrics for measuring remote team productivity. Expand on the cultural aspects of remote work management.",
+    "fee": 140,
+    "submittedAt": "2024-01-14T11:30:00Z",
+    "selected": false
+  },
+  {
+    "Id": 6,
+    "contentId": 5,
+    "expertName": "Alex Johnson",
+    "feedback": "Comprehensive coverage of remote work best practices with practical insights. The writing style is engaging and professional. Would benefit from more structured formatting and additional resources.",
+    "corrections": "Organize content into clear sections with headers. Add a resources section with links to helpful tools. Include tips for managing different time zones more effectively.",
+    "fee": 160,
+    "submittedAt": "2024-01-14T13:45:00Z",
+    "selected": false
+  }
+]

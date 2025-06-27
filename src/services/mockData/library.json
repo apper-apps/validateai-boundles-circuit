@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "contentId": 2,
+    "validatedContent": "Companies today face increasing pressure to adopt sustainable business practices that benefit both the environment and their bottom line. From reducing carbon footprints to implementing circular economy principles, businesses are discovering that sustainability is not just ethically important but also economically advantageous. Green initiatives can reduce operational costs by up to 30%, improve brand reputation significantly, and attract the growing segment of environmentally conscious consumers who make purchasing decisions based on sustainability criteria. Leading companies like Patagonia and Interface have demonstrated that sustainable practices can drive innovation, reduce waste, and create competitive advantages in the marketplace.",
+    "expertName": "Dr. Emma Williams",
+    "validatedAt": "2024-01-14T09:15:00Z",
+    "tags": ["blog-post", "Claude", "sustainability", "business"]
+  },
+  {
+    "Id": 2,
+    "contentId": 4,
+    "validatedContent": "The digital marketing landscape continues to evolve rapidly, with new platforms, technologies, and consumer behaviors shaping strategy development. Successful brands are focusing on personalization at scale, authentic storytelling that resonates with target audiences, and multi-channel engagement strategies to connect meaningfully with their customers. Video content now accounts for over 80% of internet traffic, making it essential for brand visibility. Influencer partnerships, particularly with micro-influencers who have engagement rates 3x higher than macro-influencers, and AI-powered analytics for predictive insights are becoming essential components of effective marketing campaigns that drive measurable ROI.",
+    "expertName": "Marcus Chen",
+    "validatedAt": "2024-01-13T15:20:00Z",
+    "tags": ["marketing-copy", "ChatGPT", "digital-marketing", "strategy"]
+  },
+  {
+    "Id": 3,
+    "contentId": 6,
+    "validatedContent": "Cybersecurity threats are becoming increasingly sophisticated, requiring organizations to adopt a multi-layered defense strategy. Zero-trust architecture, which assumes no user or device should be trusted by default, has become the gold standard for enterprise security. This approach involves continuous verification of users and devices, micro-segmentation of network access, and real-time monitoring of all activities. Companies implementing zero-trust have seen a 50% reduction in security incidents and significantly faster threat detection times. Key components include identity and access management (IAM), endpoint detection and response (EDR), and security information and event management (SIEM) systems.",
+    "expertName": "Rachel Martinez",
+    "validatedAt": "2024-01-11T16:30:00Z",
+    "tags": ["technical-documentation", "Gemini", "cybersecurity", "zero-trust"]
+  }
+]
