@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import ApperIcon from '@/components/ApperIcon';
 import Button from '@/components/atoms/Button';
-
+import { AuthContext } from '@/App';
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { logout } = useContext(AuthContext);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
 
   const navigation = [
     { name: 'Dashboard', href: '/dashboard', icon: 'LayoutDashboard' },
@@ -54,7 +57,26 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-          </nav>
+</nav>
+
+          {/* User actions */}
+          <div className="hidden md:flex items-center gap-3">
+            {isAuthenticated && user && (
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-600 font-medium">
+                  {user.firstName} {user.lastName}
+                </span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  icon="LogOut"
+                  onClick={logout}
+                >
+                  Logout
+                </Button>
+              </div>
+            )}
+          </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -92,7 +114,27 @@ const Header = () => {
                   <ApperIcon name={item.icon} className="w-5 h-5" />
                   {item.name}
                 </Link>
-              ))}
+))}
+              {isAuthenticated && user && (
+                <div className="pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between px-4 py-3">
+                    <span className="text-sm text-gray-600 font-medium">
+                      {user.firstName} {user.lastName}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      icon="LogOut"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        logout();
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </div>
+                </div>
+              )}
             </nav>
           </motion.div>
         )}
