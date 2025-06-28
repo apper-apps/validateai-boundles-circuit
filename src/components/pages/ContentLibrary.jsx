@@ -77,11 +77,17 @@ const ContentLibrary = () => {
     toast.success('Content copied to clipboard!');
   };
 
-  const getUniqueTypes = () => {
+const getUniqueTypes = () => {
     const types = new Set();
-    libraryItems.forEach(item => {
-      item.tags.forEach(tag => types.add(tag));
-    });
+    // Add null checking to prevent TypeError
+    if (libraryItems && Array.isArray(libraryItems)) {
+      libraryItems.forEach(item => {
+        // Also check if item and item.tags exist
+        if (item && item.tags && Array.isArray(item.tags)) {
+          item.tags.forEach(tag => types.add(tag));
+        }
+      });
+    }
     return Array.from(types).filter(type => 
       !['ChatGPT', 'Claude', 'Gemini'].includes(type)
     );
