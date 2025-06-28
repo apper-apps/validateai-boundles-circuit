@@ -41,23 +41,36 @@ const ContentLibrary = () => {
     loadLibrary();
   }, []);
 
-  useEffect(() => {
-    let filtered = libraryItems;
-
-    // Apply search filter
-    if (searchTerm) {
-      filtered = filtered.filter(item =>
-        item.validatedContent.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.expertName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-      );
+useEffect(() => {
+    // Ensure libraryItems is an array before filtering
+    if (!Array.isArray(libraryItems)) {
+      setFilteredItems([]);
+      return;
     }
 
-    // Apply type filter
-    if (selectedFilter !== 'all') {
-      filtered = filtered.filter(item =>
-        item.tags.includes(selectedFilter)
-      );
+    let filtered = [...libraryItems];
+
+    // Apply search filter with null checks
+    if (searchTerm && searchTerm.trim()) {
+      filtered = filtered.filter(item => {
+        if (!item) return false;
+        
+        const content = item.validatedContent || '';
+        const expert = item.expertName || '';
+        const tags = Array.isArray(item.tags) ? item.tags : [];
+        
+        return content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+               expert.toLowerCase().includes(searchTerm.toLowerCase()) ||
+               tags.some(tag => tag && tag.toLowerCase().includes(searchTerm.toLowerCase()));
+      });
+    }
+
+    // Apply type filter with null checks
+    if (selectedFilter && selectedFilter !== 'all') {
+      filtered = filtered.filter(item => {
+        if (!item || !Array.isArray(item.tags)) return false;
+        return item.tags.includes(selectedFilter);
+      });
     }
 
     setFilteredItems(filtered);
@@ -67,12 +80,21 @@ const ContentLibrary = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleViewContent = (item) => {
+const handleViewContent = (item) => {
+    if (!item || !item.validatedContent) {
+      toast.error('Content not available');
+      return;
+    }
     // Navigate to AI chat with this content pre-loaded
-    toast.info(`Opening "${item.validatedContent.substring(0, 50)}..." in AI Chat`);
+    const preview = item.validatedContent.substring(0, 50);
+    toast.info(`Opening "${preview}..." in AI Chat`);
   };
 
   const handleCopyContent = (content) => {
+    if (!content || typeof content !== 'string') {
+      toast.error('No content to copy');
+      return;
+    }
     navigator.clipboard.writeText(content);
     toast.success('Content copied to clipboard!');
   };
@@ -162,70 +184,84 @@ const getUniqueTypes = () => {
           )
         ) : (
           <div className="space-y-4">
-            {filteredItems.map((item) => (
-              <motion.div
-                key={item.Id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -2 }}
-                className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-200"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-gradient-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center">
-                      <ApperIcon name="CheckCircle" className="w-5 h-5 text-white" />
+{Array.isArray(filteredItems) && filteredItems.length > 0 ? filteredItems.map((item) => {
+              // Ensure item exists and has required properties
+              if (!item || !item.Id) return null;
+              
+              return (
+                <motion.div
+                  key={item.Id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -2 }}
+                  className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-200"
+                >
+                  <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-accent-500 to-accent-600 rounded-full flex items-center justify-center">
+                        <ApperIcon name="CheckCircle" className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900 font-body">
+                          Validated by {item.expertName || 'Unknown Expert'}
+                        </p>
+                        <p className="text-sm text-gray-500 font-body">
+                          {item.validatedAt ? formatDistance(new Date(item.validatedAt), new Date(), { addSuffix: true }) : 'No date available'}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-medium text-gray-900 font-body">
-                        Validated by {item.expertName}
-                      </p>
-                      <p className="text-sm text-gray-500 font-body">
-                        {formatDistance(new Date(item.validatedAt), new Date(), { addSuffix: true })}
-                      </p>
-                    </div>
+                    <StatusBadge status="validated" />
                   </div>
-                  <StatusBadge status="validated" />
-                </div>
 
-                <div className="mb-4">
-                  <p className="text-gray-700 font-body line-clamp-3">
-                    {item.validatedContent}
-                  </p>
-                </div>
+                  <div className="mb-4">
+                    <p className="text-gray-700 font-body line-clamp-3">
+                      {item.validatedContent || 'No content available'}
+                    </p>
+                  </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full"
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      {Array.isArray(item.tags) && item.tags.length > 0 ? item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      )) : (
+                        <span className="text-sm text-gray-400">No tags</span>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        icon="Copy"
+                        onClick={() => handleCopyContent(item.validatedContent)}
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        Copy
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        icon="MessageCircle"
+                        onClick={() => handleViewContent(item)}
+                      >
+                        Chat
+                      </Button>
+                    </div>
                   </div>
-
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      icon="Copy"
-                      onClick={() => handleCopyContent(item.validatedContent)}
-                    >
-                      Copy
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      icon="MessageCircle"
-                      onClick={() => handleViewContent(item)}
-                    >
-                      Chat
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            }).filter(Boolean) : (
+              <div className="col-span-full">
+                <Empty 
+                  message="No validated content available" 
+                  description="Content will appear here once experts have validated submissions"
+                />
+              </div>
+            )}
           </div>
         )}
       </div>
